@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+{% load blog_extras %}
+{%block title%}Info{%endblock%}
+{%block extra-style%}
+<style>
+    #gettext{
+        text-decoration: none;
+    }
+</style>
+{%endblock%}
+{%block content%}
+<div id="layoutSidenav_content">
+    <main>
+        <!-- Main page content-->
+        <div class="container-xl px-4 mt-4">
+            <!-- Invoice-->
+            <div class="card invoice">
+                <div class="card-header p-4 p-md-5 border-bottom-0 bg-gradient-primary-to-secondary text-white-50">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-12 col-lg-auto mb-5 mb-lg-0 text-center text-lg-start">
+                            <!-- Invoice branding-->
+                            <div class="h2 text-white mb-0">{%for name in categorysname%}
+                                {{name}} INFO{%endfor%}</div>
+                            Web Design &amp; Development
+                        </div>
+                    </div>
+                </div>
+                <div id="gettext"class="card-body p-4 p-md-5">
+                    <!-- Invoice table-->
+                    {{object.content|convert_markdown|safe}}
+                </div>
+                
+            </div>
+        </div>
+    </main>
+    {%include 'footer.html'%}
+
+{%endblock%}

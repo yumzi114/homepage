@@ -1,0 +1,170 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="yumhouse" content="yum개인 홈페이지">
+        <title>{%block title%}{%endblock%}</title>
+        <link href="{%static 'css/styles.css'%}" rel="stylesheet" />
+        <link rel="icon" type="image/x-icon" href="{%static 'assets/img/favicon.png'%}" />
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
+        <style type="text/css">
+            @font-face {
+                font-family: "Metropolis";
+                src: url("{%static 'assets/fonts/metropolis/Metropolis-Thin.otf'%}");
+                font-weight: 100;
+                font-style: normal;
+                }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-ThinItalic.otf'%}");
+            font-weight: 100;
+            font-style: italic;
+            }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-Regular.otf'%}");
+            font-weight: 400;
+            font-style: normal;
+            }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-Medium.otf'%}");
+            font-weight: 500;
+            font-style: normal;
+            }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-ExtraLight.otf'%}");
+            font-weight: 200;
+            font-style: normal;
+            }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-ExtraLightItalic.otf'%}");
+            font-weight: 200;
+            font-style: italic;
+            }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-Light.otf'%}");
+            font-weight: 300;
+            font-style: normal;
+            }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-LightItalic.otf'%}");
+            font-weight: 300;
+            font-style: italic;
+            }
+            
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-RegularItalic.otf'%}");
+            font-weight: 400;
+            font-style: italic;
+            }
+            
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-MediumItalic.otf'%}");
+            font-weight: 500;
+            font-style: italic;
+            }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-SemiBold.otf'%}");
+            font-weight: 600;
+            font-style: normal;
+            }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-SemiBoldItalic.otf'%}");
+            font-weight: 600;
+            font-style: italic;
+            }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-Bold.otf'%}");
+            font-weight: 700;
+            font-style: normal;
+            }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-BoldItalic.otf'%}");
+            font-weight: 700;
+            font-style: italic;
+            }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-ExtraBold.otf'%}");
+            font-weight: 800;
+            font-style: normal;
+            }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-ExtraBoldItalic.otf'%}");
+            font-weight: 800;
+            font-style: italic;
+            }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-Black.otf'%}");
+            font-weight: 800;
+            font-style: normal;
+            }
+            @font-face {
+            font-family: "Metropolis";
+            src: url("{%static 'assets/fonts/metropolis/Metropolis-BlackItalic.otf'%}");
+            font-weight: 800;
+            font-style: italic;
+            }
+            #mainimage{
+                background-size: cover;
+                background-image: url('https://picsum.photos/2000/500?grayscale');
+                background-position: center;
+            }
+            .title{
+                color: #ff0066;
+                font-weight: bold;
+            }
+            .powered{
+                color: white;
+            }
+
+        </style>
+        {%block extra-style%}{%endblock%}
+    </head>
+    <body class="nav-fixed">
+        {%include "navbar.html"%}
+        {%block content%}{%endblock%}
+        
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="{%static 'js/scripts.js'%}"></script>
+        <script>
+            document.querySelectorAll('button[data-type="copy"]')
+                .forEach(function(button){
+                button.addEventListener('click', function(){
+                let urlname = this.parentNode.parentNode
+                    .querySelector('td[data-type="urlname"]')
+                    .innerText;
+      
+                let tmp = document.createElement('textarea');
+                    tmp.value = urlname;
+                    tmp.setAttribute('readonly', '');
+                    tmp.style.position = 'absolute';
+                    tmp.style.left = '-9999px';
+                    document.body.appendChild(tmp);
+                    tmp.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tmp);
+                    console.log(`${urlname} copied.`);
+                    });
+                });
+        </script>
+    </body>
+</html>
