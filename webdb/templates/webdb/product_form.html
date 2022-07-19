@@ -1,0 +1,111 @@
+{%extends 'base.html'%}
+{%block title%}품목등록{%endblock%}
+{%block content%}
+<div id="layoutSidenav_content">
+    <main>
+        <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+            <div class="container-xl px-4">
+                <div class="page-header-content pt-4">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-auto mt-4">
+                            <h1 class="page-header-title">
+                                <div class="page-header-icon"><i data-feather="users"></i></div>
+                                품목등록
+                            </h1>
+                            <div class="page-header-subtitle">품목관리 메뉴</div>
+                        </div>
+                    </div>
+                    <nav class="mt-4 rounded" aria-label="breadcrumb">
+                        <ol class="breadcrumb px-3 py-2 rounded mb-0">
+                            <li class="breadcrumb-item"><a href="{%url 'webdb:productadd'%}">품목등록</a></li>
+                            <li class="breadcrumb-item ">품목조회</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div class="container-xl px-4 mt-n10">
+            <div class="card">
+                <div class="card-header">정보입력</div>
+                
+                <div class="card-body">
+                {%if form.errors%}
+                <div class="alert alert-danger">
+                    <div class="font-weight-bold"></div>
+                    {{form.errors}}
+                </div>
+                
+                {%endif%}
+                <!-- <form action="." method="post">{%csrf_token%} -->
+                <form action="." method="post">{%csrf_token%}
+                    <button class='btn btn-outline-secondary btn-xs' type="button" onclick="add_row()">행 추가하기</button>
+                    <button class='btn btn-outline-secondary btn-xs' type="button" onclick="delete_row()">행 삭제하기</button>
+                    <hr>
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th style="width: 350px;">품목명</th>
+                                <th style="width: 250px;">단가</th>
+                                <th style="width: 60px;">규격</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablebody">
+                           <td><input class="form-control" id="product_name" type="text" placeholder="" name="product_name" style="background-color:#ffe6e6;"/></td>
+                           <td><input class="form-control" id="price" type="text" placeholder="" name="price" /></td>
+                           <td><input class="form-control" id="unit" type="text" placeholder="" name="unit" style="background-color:#ffe6e6;" value="개"/></td>
+                        </tbody>
+                    </table>
+                
+                
+
+
+                    <!-- <div class="row gx-3 mb-3">
+                        <div class="col-md-3">
+                            <label class="small mb-1" for="product_name">품목명</label>
+                            <input class="form-control" id="product_name" type="text" placeholder="" name="product_name" style="background-color:#ffe6e6;"/>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="small mb-1" for="price">단가</label>
+                            <input class="form-control" id="price" type="text" placeholder="" name="price" />
+                        </div>
+                        <div class="col-md-2">
+                            <label class="small mb-1" for="unit">규격</label>
+                            <input class="form-control" id="unit" type="text" placeholder="" name="unit" style="background-color:#ffe6e6;" value="개"/>
+                        </div>
+                    </div> -->
+                    <button class="btn btn-primary mt-3" type="submit">등록</button>
+                <!-- </form> -->
+               
+                </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function add_row() {
+        //   var item1 = document.getElementById('product_name');
+        //   var item2 = document.getElementById('price');
+        //   var item3 = document.getElementById('unit');
+          var table_body = document.getElementById('tablebody');
+          // var row = my_tbody.insertRow(0); // 상단에 추가
+          var row = table_body.insertRow( table_body.rows.length ); // 하단에 추가
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+        //   cell1.innerHTML = 'HELLO world';
+        //   cell2.innerHTML = new Date().toUTCString();
+          var cell3 = row.insertCell(2);
+          cell1.innerHTML = '<input class="form-control" id="product_name" type="text" placeholder="" name="product_name" style="background-color:#ffe6e6;"/>';
+          cell2.innerHTML = '<input class="form-control" id="price" type="text" placeholder="" name="price" />';
+          cell3.innerHTML = '<input class="form-control" id="unit" type="text" placeholder="" name="unit" style="background-color:#ffe6e6;" value="개"/>';
+        }
+      
+        function delete_row() {
+          var table_body = document.getElementById('tablebody');
+          if (table_body.rows.length < 1) return;
+          // del_tablebody.deleteRow(0); // 상단부터 삭제
+          table_body.deleteRow( table_body.rows.length-1 ); // 하단부터 삭제
+        }
+      </script>
+
+    {%include 'footer.html'%}
+{%endblock%}

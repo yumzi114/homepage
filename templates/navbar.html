@@ -123,16 +123,63 @@
                             </div>
                             {%endfor%}
                     <div class="sidenav-menu-heading">DB</div>
-                    <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#" >
+                    <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" >
                         <div class="nav-link-icon"><i data-feather="users"></i></div>
                         업체관리
                         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#" >
+                    <!-- 나브안에 나브 -->
+                    <div class="collapse" id="collapseLayouts" data-bs-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayout">
+                            <!-- Nested Sidenav Accordion (Layout -> Navigation)-->
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#companysidebar" >
+                                등록/수정
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="companysidebar" data-bs-parent="#accordionSidenavLayout">
+                                <nav class="sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{%url 'webdb:companyadd'%}">등록</a>
+                                    <a class="nav-link" href="">수정</a>
+                                </nav>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="collapse" id="collapseLayouts" data-bs-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayout">
+                            <!-- Nested Sidenav Accordion (Layout -> Navigation)-->
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#companysidebarseach" >
+                                조회
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="companysidebarseach" data-bs-parent="#accordionSidenavLayout">
+                                <nav class="sidenav-menu-nested nav">
+                                    <a class="nav-link" href="">업체조회</a>
+                                    <a class="nav-link" href="">상세조회</a>
+                                </nav>
+                            </div>
+                        </nav>
+                    </div>
+                    
+                    <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#productsidebar" >
                         <div class="nav-link-icon"><i data-feather="check-square"></i></div>
                         품목관리
                         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
+                    <div class="collapse" id="productsidebar" data-bs-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayout">
+                            <!-- Nested Sidenav Accordion (Layout -> Navigation)-->
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#productdownsidebar" >
+                                등록/수정
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="productdownsidebar" data-bs-parent="#accordionSidenavLayout">
+                                <nav class="sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{%url 'webdb:productadd'%}">품목등록/수정</a>
+                                    <a class="nav-link" href="#">다수건 등록</a>
+                                </nav>
+                            </div>
+                        </nav>
+                    </div>
                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#" >
                         <div class="nav-link-icon"><i data-feather="calendar"></i></div>
                         일정관리
@@ -161,6 +208,8 @@
                             <a class="nav-link" href="#">H/W</a>
                         </nav>
                     </div>
+                </div>
+            </div>
             <!-- Sidenav Footer-->
             <div class="sidenav-footer">
                 <div class="sidenav-footer-content">

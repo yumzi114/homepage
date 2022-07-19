@@ -13,13 +13,13 @@ class contract(models.Model):
 class CompanyInfo(models.Model):
     business_num=models.CharField("Business Number",max_length=50,null=False)
     business_name=models.CharField("Name",max_length=50,blank=False,null=False)
-    addr=models.CharField("Addr",max_length=255)
-    addr_code=models.CharField("Addr_code",max_length=10)
-    slug=models.SlugField('Slug',unique=True,allow_unicode=True,help_text='주소 슬러그')
+    addr=models.CharField("Addr",max_length=255,blank=True,null=True)
+    addr_code=models.CharField("Addr_code",max_length=10,blank=True,null=True)
+    slug=models.SlugField('Slug',unique=True,allow_unicode=True,help_text='주소 슬러그',blank=True,null=True)
     cls=models.CharField("Class",max_length=50)
-    Email=models.CharField("E-mail",max_length=50)
-    tel=models.CharField("Tel",max_length=50)
-    fax=models.CharField("Fax",max_length=50)
+    Email=models.CharField("E-mail",max_length=50,blank=True,null=True)
+    tel=models.CharField("Tel",max_length=50,blank=True,null=True)
+    fax=models.CharField("Fax",max_length=50,blank=True,null=True)
     class Meta:
         db_table='company_info'
 
@@ -33,7 +33,7 @@ class CompanyUser(models.Model):
 
 class Product(models.Model):
     product_name=models.CharField("name",max_length=50)
-    price=models.IntegerField('price')
+    price=models.IntegerField('price',blank=True,null=True)
     unit=models.CharField("unit",max_length=10)
     class Meta:
         db_table='product'

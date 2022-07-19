@@ -18,6 +18,8 @@ from django.urls import path,include
 from . import views
 app_name='webdb'
 urlpatterns = [
-    # path('company/',),
+    path('company/add/',views.CompanyCreateView.as_view(),name='companyadd'),
+    path('product/add/',views.ProductCreateView.as_view(),name='productadd'),
+    # path('product/adds/',views.ProductsCreateView.as_view(),name='productadds'),
     # path('product/',),
 ]

@@ -1,0 +1,88 @@
+{%extends 'base.html'%}
+{%block title%}업체등록{%endblock%}
+{%block content%}
+<div id="layoutSidenav_content">
+    <main>
+        <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+            <div class="container-xl px-4">
+                <div class="page-header-content pt-4">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-auto mt-4">
+                            <h1 class="page-header-title">
+                                <div class="page-header-icon"><i data-feather="users"></i></div>
+                                업체등록
+                            </h1>
+                            <div class="page-header-subtitle">업체관리 메뉴</div>
+                        </div>
+                    </div>
+                    <nav class="mt-4 rounded" aria-label="breadcrumb">
+                        <ol class="breadcrumb px-3 py-2 rounded mb-0">
+                            <li class="breadcrumb-item"><a href="{%url 'webdb:companyadd'%}">업체등록</a></li>
+                            <li class="breadcrumb-item">업체조회</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div class="container-xl px-4 mt-n10">
+            <div class="card">
+                <div class="card-header">정보입력</div>
+                <div class="card-body">
+                {%if form.errors%}
+                <div class="alert alert-danger">
+                    <div class="font-weight-bold"></div>
+                    {{form.errors}}
+                </div>
+                {%endif%}
+                <form action="." method="post">{%csrf_token%}
+                    <div class="mb-3">
+                        <label class="small mb-1" for="business_num">사업자번호(- 제외한 번호)</label>
+                        <input class="form-control" id="business_num" type="text" placeholder="예시) 1234567891123" name="business_num" style="background-color:#ffe6e6;"/>
+                    </div>
+                    <div class="row gx-3 mb-3">
+                        <div class="col-md-8">
+                            <label class="small mb-1" for="business_name">사업자명</label>
+                            <input class="form-control" id="business_name" type="text" placeholder="OOO마트" name="business_name" style="background-color:#ffe6e6;"/>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="small mb-1" for="cls">업태</label>
+                            <input class="form-control" id="cls" type="text" placeholder="예시) 도소매" name="cls" name="cls" style="background-color:#ffe6e6;"/>
+                        </div>
+                    </div>
+                    <div class="row gx-3 mb-3">
+                        <div class="col-md-10">
+                            <label class="small mb-1" for="addr">업체주소</label>
+                            <input class="form-control" id="addr" type="text" name="addr"/>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="small mb-1" for="addr_code">우편번호</label>
+                            <input class="form-control" id="addr_code" type="text" name="addr_code"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="small mb-1" for="slug">주소 SLUG</label>
+                        <input class="form-control" id="slug" type="text" placeholder="입력 주소에 따라 생성되는 SLUG" value="" readonly="readonly" name="slug"/>
+                    </div>
+                    <div class="row gx-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="small mb-1" for="tel">연락처</label>
+                            <input class="form-control" id="tel" type="tel" name="tel" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="small mb-1" for="fax">FAX</label>
+                            <input class="form-control" id="fax" type="tel" name='fax'/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="small mb-1" for="Email">E-mail</label>
+                        <input class="form-control" id="Email" type="email" value="" name="Email"/>
+                    </div>
+                    <button class="btn btn-primary" type="submit">등록</button>
+                </form>
+                
+                </div>
+            </div>
+        </div>
+    </main>
+    {%include 'footer.html'%}
+{%endblock%}
