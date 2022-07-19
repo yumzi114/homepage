@@ -16,9 +16,28 @@
                 <h2 class="mt-5 mb-0">Hi</h2>
                 <p>서버에 접속된 IP를 조회합니다 PC기준으로 게이트웨이 IP가 조회되고 휴대폰 및 5G환경은 유동IP입니다</p>
                 <hr class="mt-0 mb-4" />
+                <p> 
+                {%if ip%}
+                IP : <strong>{{ip}}</strong></br>
+                country_name(나라) : <strong>{{country_name}}</strong></br>
+                region(도) : <strong>{{region}}</strong></br>
+                city(시) : <strong>{{city}}</strong></br>
+                loc(위도경도) : <strong>{{loc}}</strong></br>
+                org(통신사) : <strong>{{org}}</strong></br>
+                postal(우편번호) : <strong>{{postal}}</strong></br>
+                {%endif%}
+                </p>
                 <h2 class="mt-5 mb-0">Your Server</h2>
                 <p>접속된 IP를 기준으로 서버를 조회합니다 운영중인 서버가 있다면 표시되어 집니다</p>
                 <hr class="mt-0 mb-4" />
+                <p>
+                {%if severdata%}
+                {%for severdata in severdata%}
+                {{severdata.port}}</br>
+                {{severdata.data}}</br>
+                {%endfor%}
+                {%endif%}
+                </p>
             </div>
         </div>
     </div>

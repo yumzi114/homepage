@@ -24,9 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-hpklvnde4jd=(hq$8xk)l8@$$j=58a=ro3o34*d3zml(r9ud$+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+if not DEBUG:
+    ALLOWED_HOSTS = ['172.30.1.100']
+if DEBUG:
+    ALLOWED_HOSTS = ['127.0.0.1']
+
 
 
 # Application definition
@@ -80,7 +84,7 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'homepage_db',
+        'NAME': 'homepage_db2',
         'USER': 'yumzi114',
         'PASSWORD': 'dkTkdjawl1!',
         'HOST': 'localhost',
@@ -134,3 +138,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+IPINFO_TOKEN = '2095eca68bcf6c'
+IPINFO_SETTINGS = {
+  'cache_options': {
+      'ttl':30,
+      'maxsize': 128
+  },
+#   'countries_file': 'custom_countries.json'
+}
+IPINFO_FILTER = lambda request: request.scheme == 'http'
+##################Login관련################
+LOGIN_REDIRECT_URL='/'
+LOGOUT_REDIRECT_URL='/'
+
+CSRF_TRUSTED_ORIGINS = ['https://ityumhouse.com','https://*.127.0.0.1']
