@@ -1,5 +1,14 @@
 {%extends 'base.html'%}
 {%block title%}품목등록{%endblock%}
+{%block extra-style%}
+<style>
+    @media (min-width: 1023px) {
+    #formcontainer {
+        width: 900px;
+    
+    }}
+</style>
+{%endblock%}
 {%block content%}
 <div id="layoutSidenav_content">
     <main>
@@ -9,7 +18,7 @@
                     <div class="row align-items-center justify-content-between">
                         <div class="col-auto mt-4">
                             <h1 class="page-header-title">
-                                <div class="page-header-icon"><i data-feather="users"></i></div>
+                                <div class="page-header-icon"><i data-feather="check-square"></i></div>
                                 품목등록
                             </h1>
                             <div class="page-header-subtitle">품목관리 메뉴</div>
@@ -25,7 +34,7 @@
             </div>
         </header>
         <div class="container-xl px-4 mt-n10">
-            <div class="card">
+            <div class="card" id='formcontainer'>
                 <div class="card-header">정보입력</div>
                 
                 <div class="card-body">
@@ -38,15 +47,15 @@
                 {%endif%}
                 <!-- <form action="." method="post">{%csrf_token%} -->
                 <form action="." method="post">{%csrf_token%}
-                    <button class='btn btn-outline-secondary btn-xs' type="button" onclick="add_row()">행 추가하기</button>
-                    <button class='btn btn-outline-secondary btn-xs' type="button" onclick="delete_row()">행 삭제하기</button>
+                    <button class='btn btn-outline-secondary lift btn-xs' type="button" onclick="add_row()">행 추가</button>
+                    <button class='btn btn-outline-secondary lift btn-xs' type="button" onclick="delete_row()">행 삭제</button>
                     <hr>
                     <table id="datatablesSimple">
                         <thead>
                             <tr>
                                 <th style="width: 350px;">품목명</th>
                                 <th style="width: 250px;">단가</th>
-                                <th style="width: 60px;">규격</th>
+                                <th style="width: 80px;">규격</th>
                             </tr>
                         </thead>
                         <tbody id="tablebody">
@@ -73,7 +82,7 @@
                             <input class="form-control" id="unit" type="text" placeholder="" name="unit" style="background-color:#ffe6e6;" value="개"/>
                         </div>
                     </div> -->
-                    <button class="btn btn-primary mt-3" type="submit">등록</button>
+                    <button class="btn btn-primary lift mt-3" type="submit">등록</button>
                 <!-- </form> -->
                
                 </form>
@@ -94,7 +103,7 @@
         //   cell1.innerHTML = 'HELLO world';
         //   cell2.innerHTML = new Date().toUTCString();
           var cell3 = row.insertCell(2);
-          cell1.innerHTML = '<input class="form-control" id="product_name" type="text" placeholder="" name="product_name" style="background-color:#ffe6e6;"/>';
+          cell1.innerHTML = '<input class="form-control" id="product_name-" type="text" placeholder="" name="product_name" style="background-color:#ffe6e6;"/>';
           cell2.innerHTML = '<input class="form-control" id="price" type="text" placeholder="" name="price" />';
           cell3.innerHTML = '<input class="form-control" id="unit" type="text" placeholder="" name="unit" style="background-color:#ffe6e6;" value="개"/>';
         }

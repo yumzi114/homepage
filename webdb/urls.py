@@ -19,7 +19,10 @@ from . import views
 app_name='webdb'
 urlpatterns = [
     path('company/add/',views.CompanyCreateView.as_view(),name='companyadd'),
-    path('product/add/',views.ProductCreateView.as_view(),name='productadd'),
+    path('company/list/',views.CompanyLV.as_view(),name='companylist'),
+    path('product/add/',views.get_productadds,name='productadd'),
+    path('product/list/',views.ProductLV.as_view(),name='productlist'),
+    
     # path('product/adds/',views.ProductsCreateView.as_view(),name='productadds'),
     # path('product/',),
 ]

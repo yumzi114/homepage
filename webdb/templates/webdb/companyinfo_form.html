@@ -50,9 +50,15 @@
                         </div>
                     </div>
                     <div class="row gx-3 mb-3">
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <label class="small mb-1" for="addr">업체주소</label>
                             <input class="form-control" id="addr" type="text" name="addr"/>
+                        </div>
+                        <div class="col-md-1">
+                            <label class="small mb-1" >검색</label><br>
+                            <button class="btn btn-outline-green btn-icon lift" type="button" onclick="daumapi()">
+                            <i data-feather="search"></i>
+                            </button>
                         </div>
                         <div class="col-md-2">
                             <label class="small mb-1" for="addr_code">우편번호</label>
@@ -77,12 +83,46 @@
                         <label class="small mb-1" for="Email">E-mail</label>
                         <input class="form-control" id="Email" type="email" value="" name="Email"/>
                     </div>
-                    <button class="btn btn-primary" type="submit">등록</button>
+                    <button class="btn btn-primary lift" type="submit">등록</button>
                 </form>
                 
                 </div>
             </div>
         </div>
     </main>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function daumapi() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    var addr = '';
+                    var extraAddr = '';
+                    if (data.userSelectedType === 'R') { 
+                        addr = data.roadAddress;
+                    } else {
+                        addr = data.jibunAddress;
+                    }
+                    if(data.userSelectedType === 'R'){
+                        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                            extraAddr += data.bname;
+                        }
+                        if(data.buildingName !== '' && data.apartment === 'Y'){
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        if(extraAddr !== ''){
+                            extraAddr = ' (' + extraAddr + ')';
+                        }
+                        document.getElementById("addr").value += +extraAddr;
+                    
+                    } else {
+                        document.getElementById("addr").value += '';
+                    }
+                    document.getElementById('addr_code').value = data.zonecode;
+                    document.getElementById("addr").value = addr;
+                    document.getElementById("addr").focus();
+                }
+            }).open();
+        }
+    </script>
     {%include 'footer.html'%}
 {%endblock%}

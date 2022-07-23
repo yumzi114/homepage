@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-hpklvnde4jd=(hq$8xk)l8@$$j=58a=ro3o34*d3zml(r9ud$+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 if not DEBUG:
     ALLOWED_HOSTS = ['172.30.1.100']
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+    'userconf.apps.UserconfConfig',
     'webdb.apps.WebdbConfig',
     'widget_tweaks',
 ]
@@ -147,8 +148,12 @@ IPINFO_SETTINGS = {
 #   'countries_file': 'custom_countries.json'
 }
 IPINFO_FILTER = lambda request: request.scheme == 'http'
-##################Login관련################
+
+########LOGIN관련#######
+#LOGIN_URL='/accounts/login/'
 LOGIN_REDIRECT_URL='/'
-LOGOUT_REDIRECT_URL='/'
+LOGOUT_REDIRECT_URL='/accounts/login/'
 
 CSRF_TRUSTED_ORIGINS = ['https://ityumhouse.com','https://*.127.0.0.1']
+######사용자관련#########
+AUTH_USER_MODEL='userconf.UserProfile'

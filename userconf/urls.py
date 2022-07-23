@@ -15,16 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from . import views,settings
-from django.conf.urls.static import static
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.HomeViews.as_view(), name='home'),
-    path('blog/', include('blog.urls')),
-    path('webdb/', include('webdb.urls')),
-    path('accounts/',include('django.contrib.auth.urls')),
-    path('accounts/register/',views.UserCreatView.as_view(),name='register'),
-    path('accounts/register/done/',views.UserCreateDoneTV.as_view(),name='register_done'),
-]
-urlpatterns +=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+app_name='userconf'
+urlpatterns = []
+   

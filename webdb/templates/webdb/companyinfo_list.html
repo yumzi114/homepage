@@ -1,13 +1,6 @@
 {%extends 'base.html'%}
-{%block title%}품목조회{%endblock%}
+{%block title%}업체조회{%endblock%}
 {%block extra-style%}
-<style>
-    @media (min-width: 1023px) {
-    #productlist {
-        width: 900px;
-    
-    }}
-</style>
 {%endblock%}
 {%block content%}
 <div id="layoutSidenav_content">
@@ -19,9 +12,9 @@
                         <div class="col-auto mt-4">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="users"></i></div>
-                                품목리스트
+                                업체리스트
                             </h1>
-                            <div class="page-header-subtitle">등록된 품목리스트를 조회합니다</div>
+                            <div class="page-header-subtitle">등록된 업체리스트를 조회합니다</div>
                         </div>
                     </div>
                 </div>
@@ -29,23 +22,28 @@
         </header>
         <!-- Main page content-->
         <div class="container-xl px-4 mt-n10">
-            <div class="card mb-4" id="productlist">
-                <div class="card-header">품목리스트(실제품목과 상관없는 무작위 데이터입니다)</div>
+            <div class="card mb-4">
+                <div class="card-header">업체목록조회(실제업체와는 상관없는 무작위 데이터입니다)</div>
                 <div class="card-body">
                     <table id="datatablesSimple">
                         <thead>
                             <tr>
-                                <th>품목명</th>
-                                <th>단가</th>
-                                <th>규격</th>
+                                <th>업체명</th>
+                                <th>사업자번호</th>
+                                <th>주소</th>
+                                <th>업태</th>
+                                <th>연락처</th>
+                                <th>FAX</th>
+                                <th>E-MAIL</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>품목명</th>
-                                <th>단가</th>
-                                <th>규격</th>
+                                <th>업체명</th>
+                                <th>사업자번호</th>
+                                <th>주소</th>
+                                <th>업태</th>
                                 <th>Actions</th>
                             </tr>
                         </tfoot>
@@ -53,9 +51,13 @@
                             {%if object_list%}
                             {%for object in object_list%}
                             <tr>
-                                <td>{{object.product_name}}</td>
-                                <td>{{object.price}}</td>
-                                <td>{{object.unit}}</td>
+                                <td>{{object.business_name}}</td>
+                                <td>{{object.business_num}}</td>
+                                <td>{{object.addr}}</td>
+                                <td>{{object.cls}}</td>
+                                <td>{{object.tel}}</td>
+                                <td>{{object.fax}}</td>
+                                <td>{{object.Email}}</td>
                                 <td>
                                     <button class="btn btn-datatable btn-icon btn-transparent-dark me-2"><i data-feather="more-vertical"></i></button>
                                     <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
