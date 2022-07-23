@@ -42,15 +42,37 @@ class HomeViews(TemplateView):
         severdata=get_server(ip)
         context={'categorys':self.cteagorylist,
                 "severdata":severdata,
-
         }
         context.update(ip_data)
         return self.render_to_response(context)
+
 class UserCreatView(CreateView):
         template_name='registration/register.html'
         form_class=UserCreationForm
         success_url=reverse_lazy('register_done')
+        cteagorylist=category.objects.all()
+        def get(self, request, *args,**kwargs):
+                context={'categorys':self.cteagorylist}
+                return self.render_to_response(context)
 
+                
 class UserCreateDoneTV(TemplateView):
         template_name='registration/register_done.html'
+
+class ServerNetViews(TemplateView):
+        cteagorylist=category.objects.all()
+        template_name='serverview_net.html'
+        def get(self, request, *args,**kwargs):
+                context={'categorys':self.cteagorylist,
+                }
+                return self.render_to_response(context)
+
+class ServerHwViews(TemplateView):
+        cteagorylist=category.objects.all()
+        template_name='serverview_hw.html'
+        def get(self, request, *args,**kwargs):
+                context={'categorys':self.cteagorylist,
+                }
+                return self.render_to_response(context)
+
         
